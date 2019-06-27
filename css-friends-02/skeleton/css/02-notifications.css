@@ -8,3 +8,33 @@
 .notification:hover .badge {
     background: red;
 }
+
+.nav-items {
+    position: relative;
+}
+
+.dropdown {
+    width: 150%;
+    background-color: white;
+    color: black;
+    position: absolute;
+    z-index: 1;
+}
+
+.dropdown li {
+    padding: 10px;
+    border: 1px solid grey;
+}
+
+.dropdown li:hover + .hidden {
+    background-color: grey;
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+.notification:hover + .hidden {
+    display: block;
+}
