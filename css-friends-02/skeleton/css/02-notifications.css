@@ -1,0 +1,10 @@
+.notification .badge {
+    padding: 5px 10px;
+    border-radius: 50%;
+    background: black;
+    color: white;
+}
+
+.notification:hover .badge {
+    background: red;
+}
