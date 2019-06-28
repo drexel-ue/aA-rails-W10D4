@@ -16,15 +16,17 @@ class User < ApplicationRecord
     
     attr_reader :password
 
+    after_initialize :ensure_session_token
+
     include Ownerable
-    
+
     has_many :subs,
         foreign_key: :moderator_id
 
     def self.find_by_credentials(username, pass)
         user = User.find_by(username: username)
 
-        if user && is_password?(pass)
+        if user && user.is_password?(pass)
             return user
         else
             return nil

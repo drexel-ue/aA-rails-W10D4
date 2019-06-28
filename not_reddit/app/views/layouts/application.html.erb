@@ -5,11 +5,25 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%# <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%# javascript_include_tag 'application', 'data-turbolinks-track': 'reload'  %>
   </head>
 
   <body>
+    <%if logged_in?%>
+    <h1><%=current_user.username%></h1>
+    <form action='<%=session_url%>' method='post'>
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="delete">
+    <input type='submit' value='logout'>
+    </form>
+    <% elsif params[:controller] != 'sessions' %>
+      <a href="<%= new_session_url %>">Sign In</a>
+      <a href="<%= new_user_url %>">Sign Up</a>
+    <% end %>
+
+    <%= render partial: 'layouts/errors' %>
+    
     <%= yield %>
   </body>
 </html>

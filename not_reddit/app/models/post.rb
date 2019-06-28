@@ -14,6 +14,6 @@
 
 class Post < ApplicationRecord
     validates :title, :sub_id, :author_id, presence: true
-
+    # validates :sub_ids, length: {minimum: 1}
     belongs_to :sub
 end

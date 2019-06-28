@@ -1,0 +1,31 @@
+<section>
+    <div>
+        <ul>
+        <%if @subs%>
+        <%@subs.each do |sub|%>
+            <li><%=sub.title%></li>
+            <li>w<%=sub.description%></li>
+        <%end%>
+        <%end%>
+        </ul>
+
+        <br>
+
+        <form action="<%= subs_url %>" method="post">
+        
+        <input type='hidden' name="authenticity_token" value="<%=form_authenticity_token%>">
+
+        <label>
+            Title
+            <input type="text" name="sub[title]" value='<%=@sub ? @sub.title : ""%>'>
+        </label>
+
+        <label>
+            Description
+            <input type="text" name="sub[description]" value='<%=@sub ? @sub.description : ""%>'>
+        </label>
+
+        <button>Make dat mf</button>
+        </form>
+    </div>
+</section>
